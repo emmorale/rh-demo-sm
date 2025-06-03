@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-ejemplo-svc
+  labels:
+    app: app-ejemplo
+spec:
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8080
+  selector:
+    app: app-ejemplo # Selecciona pods con esta etiqueta, sin importar la versión

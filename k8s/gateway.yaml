@@ -1,0 +1,14 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: app-ejemplo-gateway
+spec:
+  selector:
+    istio: ingressgateway # Usa el ingress gateway por defecto de Istio
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*" # O un host específico como app-ejemplo.tu-dominio.com

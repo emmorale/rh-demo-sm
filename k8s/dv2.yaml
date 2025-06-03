@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-ejemplo-v2
+  labels:
+    app: app-ejemplo
+    version: v2
+spec:
+  replicas: 1 # O las que necesites para pruebas
+  selector:
+    matchLabels:
+      app: app-ejemplo
+      version: v2
+  template:
+    metadata:
+      labels:
+        app: app-ejemplo
+        version: v2
+    spec:
+      containers:
+      - name: app-ejemplo
+        image: tu-repo/app-ejemplo:v2 # Reemplaza con tu imagen v2
+        ports:
+        - containerPort: 8080

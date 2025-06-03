@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-ejemplo-v1
+  labels:
+    app: app-ejemplo
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-ejemplo
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: app-ejemplo
+        version: v1
+      # Asegúrate de que la inyección de sidecar esté habilitada si no lo está en el namespace
+      # annotations:
+      # sidecar.istio.io/inject: "true"
+    spec:
+      containers:
+      - name: app-ejemplo
+        image: tu-repo/app-ejemplo:v1 # Reemplaza con tu imagen
+        ports:
+        - containerPort: 8080

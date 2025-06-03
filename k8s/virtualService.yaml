@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: app-ejemplo-vs
+spec:
+  hosts:
+  - "*" # O el mismo host que en tu Gateway
+  gateways:
+  - app-ejemplo-gateway # Asocia este VirtualService al Gateway
+  http:
+  - route:
+    - destination:
+        host: app-ejemplo-svc # El service de Kubernetes
+        subset: v1 # Envía todo el tráfico a la versión v1
+      weight: 100 # 100% del tráfico a v1
+    - destination: # Definimos v2 aquí pero con peso 0 inicialmente
+        host: app-ejemplo-svc
+        subset: v2
+      weight: 0

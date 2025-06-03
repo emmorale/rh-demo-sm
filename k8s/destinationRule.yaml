@@ -1,0 +1,13 @@
+apiVersion: networking.istio.io/v1alpha3 # O v1beta1 dependiendo de la versión de Istio en OSM 3.0
+kind: DestinationRule
+metadata:
+  name: app-ejemplo-dr
+spec:
+  host: app-ejemplo-svc # El service de Kubernetes
+  subsets:
+  - name: v1
+    labels:
+      version: v1 # Pods con esta etiqueta pertenecen al subset v1
+  - name: v2
+    labels:
+      version: v2 # Pods con esta etiqueta pertenecen al subset v2

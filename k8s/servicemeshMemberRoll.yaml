@@ -1,0 +1,10 @@
+apiVersion: maistra.io/v1 # La API group para SMMR en Service Mesh
+kind: ServiceMeshMemberRoll
+metadata:
+  name: default # Nombre común para el SMMR, usualmente 'default' si solo tienes un plano de control.
+  namespace: istio-system # O el namespace donde desplegaste tu ServiceMeshControlPlane (SMCP)
+spec:
+  members:
+    # Lista de proyectos (namespaces) que serán parte de esta malla de servicios
+    - mi-aplicacion-ns
+    # - otro-proyecto-ns  # Puedes añadir más proyectos aquí
